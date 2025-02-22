@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的工作介紹</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            text-align: center;
+            color: white;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+            color: black;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            color: #333;
+            font-size: 26px;
+        }
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            background: #ff6600;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background: #cc5200;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>我的工作介紹</header>
+    <div class="container">
+        <h2>智慧製造工程師</h2>
+        <p>專注於減少運營浪費，使用 TOC 和精益生產方法，建立標準化流程，並開發系統來優化工作流程。</p>
+        <p>透過數位化和自動化，降低人為錯誤，提高工作效率。</p>
+        <button class="button" onclick="showMessage()">了解更多</button>
+    </div>
+    <script>
+        function showMessage() {
+            alert("歡迎來到我的個人介紹頁面！");
+        }
+    </script>
+</body>
+</html>
