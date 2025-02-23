@@ -59,3 +59,78 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化動畫
     animateSkills();
 });
+
+function toggleProject(projectId) {
+    const details = document.getElementById(projectId);
+    const overlay = document.querySelector('.modal-overlay') || createOverlay();
+    
+    if (details.style.display === 'none' || !details.style.display) {
+        // 顯示模態視窗
+        overlay.style.display = 'block';
+        details.style.display = 'block';
+        
+        // 添加活動狀態
+        overlay.classList.add('active');
+        details.classList.add('active');
+        document.body.classList.add('modal-active');
+        
+        // 添加關閉按鈕
+        if (!details.querySelector('.close-button')) {
+            const closeButton = document.createElement('button');
+            closeButton.className = 'close-button';
+            closeButton.innerHTML = '×';
+            closeButton.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                closeProject(projectId);
+            };
+            details.insertBefore(closeButton, details.firstChild);
+        }
+        
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeProject(projectId) {
+    const details = document.getElementById(projectId);
+    const overlay = document.querySelector('.modal-overlay');
+    
+    // 移除活動狀態
+    overlay.classList.remove('active');
+    details.classList.remove('active');
+    document.body.classList.remove('modal-active');
+    
+    // 隱藏元素
+    details.style.display = 'none';
+    overlay.style.display = 'none';
+    
+    document.body.style.overflow = '';
+}
+
+function createOverlay() {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    
+    // 簡化遮罩層點擊事件
+    overlay.addEventListener('click', function(e) {
+        if (e.target === this) {
+            const visibleDetails = document.querySelector('.project-details[style*="display: block"]');
+            if (visibleDetails) {
+                closeProject(visibleDetails.id);
+            }
+        }
+    });
+    
+    document.body.appendChild(overlay);
+    return overlay;
+}
+
+// 添加 ESC 鍵關閉功能
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const visibleDetails = document.querySelector('.project-details[style*="display: block"]');
+        if (visibleDetails) {
+            closeProject(visibleDetails.id);
+        }
+    }
+});
