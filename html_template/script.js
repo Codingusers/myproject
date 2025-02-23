@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 創建粒子
     createParticles();
+
+    // 確保所有專案詳細內容初始狀態正確
+    document.querySelectorAll('.project-details').forEach(details => {
+        details.style.display = '';  // 移除可能存在的 display 樣式
+    });
 });
 
 function toggleProject(projectId) {
@@ -74,12 +79,8 @@ function toggleProject(projectId) {
     // 更新展開圖標
     icon.textContent = card.classList.contains('active') ? '−' : '+';
     
-    // 展開/收合內容
-    if (card.classList.contains('active')) {
-        details.style.display = 'block';
-    } else {
-        details.style.display = 'none';
-    }
+    // 不需要手動設置 display 屬性，讓 CSS 處理可見性
+    details.style.display = '';  // 移除可能存在的 display 樣式
 }
 
 function createOverlay() {
