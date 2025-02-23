@@ -346,6 +346,59 @@ nav ul li a:hover {
     .detail-section {
         padding: 10px;
     }
+
+    .project-card {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .project-header {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .project-summary {
+        padding-right: 40px;
+        margin: 8px 0;
+    }
+
+    .project-card.active .project-details {
+        max-height: 2000px;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .detail-section {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .detail-section h4 {
+        margin-bottom: 12px;
+        padding: 0 5px;
+    }
+
+    .detail-section ul {
+        padding: 0 10px 0 25px;
+        width: 100%;
+    }
+
+    .detail-section ul li {
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 8px 0;
+        padding-right: 5px;
+    }
+
+    .timeline-content {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .timeline-item {
+        padding-left: 40px;
+        width: 100%;
+    }
 }
 
 .project-card {
@@ -563,30 +616,4 @@ body::before {
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     animation: float 20s infinite linear;
-}
-
-/* 手機版特別處理 */
-@media (max-width: 768px) {
-    .project-card.active .project-details {
-        max-height: 2000px;
-        padding: 15px;
-    }
-
-    .project-details {
-        transition: all 0.6s ease-out;
-    }
-
-    .detail-section {
-        margin-bottom: 10px;
-    }
-
-    .detail-section ul {
-        padding-left: 15px;
-    }
-
-    .detail-section ul li {
-        font-size: 0.95em;
-        line-height: 1.5;
-        margin: 8px 0;
-    }
 }
