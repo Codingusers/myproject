@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化動畫
     animateSkills();
+
+    // 創建粒子
+    createParticles();
 });
 
 function toggleProject(projectId) {
@@ -134,3 +137,44 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // 隨機位置和動畫延遲
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// 添加浮動動畫
+const floatKeyframes = `
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(100px, 100px);
+    }
+    50% {
+        transform: translate(200px, 0);
+    }
+    75% {
+        transform: translate(100px, -100px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = floatKeyframes;
+document.head.appendChild(styleSheet);
