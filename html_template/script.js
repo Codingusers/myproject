@@ -64,50 +64,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function toggleProject(projectId) {
+    const card = document.getElementById(projectId).closest('.project-card');
     const details = document.getElementById(projectId);
-    const overlay = document.querySelector('.modal-overlay') || createOverlay();
+    const icon = card.querySelector('.expand-icon');
     
-    if (details.style.display === 'none' || !details.style.display) {
-        // 顯示模態視窗
-        overlay.style.display = 'block';
+    // 切換活動狀態
+    card.classList.toggle('active');
+    
+    // 更新展開圖標
+    icon.textContent = card.classList.contains('active') ? '−' : '+';
+    
+    // 展開/收合內容
+    if (card.classList.contains('active')) {
         details.style.display = 'block';
-        
-        // 添加活動狀態
-        overlay.classList.add('active');
-        details.classList.add('active');
-        document.body.classList.add('modal-active');
-        
-        // 添加關閉按鈕
-        if (!details.querySelector('.close-button')) {
-            const closeButton = document.createElement('button');
-            closeButton.className = 'close-button';
-            closeButton.innerHTML = '×';
-            closeButton.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                closeProject(projectId);
-            };
-            details.insertBefore(closeButton, details.firstChild);
-        }
-        
-        document.body.style.overflow = 'hidden';
+    } else {
+        details.style.display = 'none';
     }
-}
-
-function closeProject(projectId) {
-    const details = document.getElementById(projectId);
-    const overlay = document.querySelector('.modal-overlay');
-    
-    // 移除活動狀態
-    overlay.classList.remove('active');
-    details.classList.remove('active');
-    document.body.classList.remove('modal-active');
-    
-    // 隱藏元素
-    details.style.display = 'none';
-    overlay.style.display = 'none';
-    
-    document.body.style.overflow = '';
 }
 
 function createOverlay() {
