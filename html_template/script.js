@@ -77,10 +77,7 @@ function toggleProject(projectId) {
     card.classList.toggle('active');
     
     // 更新展開圖標
-    icon.textContent = card.classList.contains('active') ? '−' : '+';
-    
-    // 不需要手動設置 display 屬性，讓 CSS 處理可見性
-    details.style.display = '';  // 移除可能存在的 display 樣式
+    icon.textContent = card.classList.contains('active') ? '▼' : '▶';
 }
 
 function createOverlay() {
