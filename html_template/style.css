@@ -384,19 +384,19 @@ nav ul li a:hover {
 
 /* 修改 project-details 的樣式 */
 .project-details {
-    padding: 0;  /* 初始狀態不要有 padding */
+    padding: 0;
     background: var(--card-background);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease-out;  /* 改為 all 來同時處理高度和 padding */
-    opacity: 0;  /* 初始狀態設為透明 */
-    visibility: hidden;  /* 初始狀態隱藏 */
+    transition: all 0.5s ease-out;
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* 活動狀態的樣式 */
 .project-card.active .project-details {
-    max-height: 500px;
+    max-height: 1000px;
     padding: 20px;
     opacity: 1;
     visibility: visible;
@@ -404,7 +404,7 @@ nav ul li a:hover {
 
 /* 移除不需要的動畫類別 */
 .project-details.active {
-    animation: none;  /* 移除之前的動畫 */
+    animation: none;
 }
 
 /* 修改展開圖標的動畫 */
@@ -563,4 +563,30 @@ body::before {
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     animation: float 20s infinite linear;
+}
+
+/* 手機版特別處理 */
+@media (max-width: 768px) {
+    .project-card.active .project-details {
+        max-height: 2000px;
+        padding: 15px;
+    }
+
+    .project-details {
+        transition: all 0.6s ease-out;
+    }
+
+    .detail-section {
+        margin-bottom: 10px;
+    }
+
+    .detail-section ul {
+        padding-left: 15px;
+    }
+
+    .detail-section ul li {
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 8px 0;
+    }
 }
