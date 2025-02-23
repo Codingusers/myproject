@@ -445,6 +445,7 @@ nav ul li a:hover {
     transition: all 0.5s ease-out;
     opacity: 0;
     visibility: hidden;
+    width: 100%;
 }
 
 /* 活動狀態的樣式 */
@@ -476,30 +477,36 @@ nav ul li a:hover {
 }
 
 .detail-section {
-    margin-bottom: 15px;
+    margin: 0 0 20px 0;
+    width: 100%;
 }
 
 .detail-section h4 {
+    margin: 0 0 15px 0;
+    padding: 0;
     color: var(--text-color);
-    margin-bottom: 10px;
 }
 
 .detail-section ul {
     list-style-type: none;
-    padding-left: 20px;
+    margin: 0;
+    padding: 0 0 0 20px;
+    width: 100%;
 }
 
 .detail-section ul li {
-    margin: 5px 0;
+    margin: 8px 0;
     position: relative;
+    padding: 0 0 0 20px;
     color: var(--text-color);
 }
 
 .detail-section ul li:before {
     content: "•";
-    color: #007bff;
+    color: var(--secondary-color);
     position: absolute;
-    left: -15px;
+    left: 0;
+    top: 0;
 }
 
 /* 添加遮罩層 */
@@ -616,4 +623,72 @@ body::before {
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     animation: float 20s infinite linear;
+}
+
+/* 手機版特別處理 */
+@media (max-width: 768px) {
+    .project-card {
+        margin: 15px 0;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .project-header {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .project-header h3 {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+        padding-right: 30px;
+    }
+
+    .project-summary {
+        font-size: 0.9em;
+        margin: 5px 0;
+        padding-right: 30px;
+    }
+
+    .project-card.active .project-details {
+        padding: 15px;
+        max-height: 2000px;
+    }
+
+    .detail-section {
+        margin: 0 0 15px 0;
+    }
+
+    .detail-section h4 {
+        font-size: 1em;
+        margin: 0 0 10px 0;
+    }
+
+    .detail-section ul {
+        padding: 0 0 0 15px;
+    }
+
+    .detail-section ul li {
+        font-size: 0.9em;
+        line-height: 1.4;
+        margin: 6px 0;
+        padding: 0 0 0 15px;
+    }
+
+    .expand-icon {
+        right: 15px;
+        font-size: 20px;
+    }
+
+    .timeline-content {
+        padding: 15px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .timeline-item {
+        padding-left: 40px;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
 }
