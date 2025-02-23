@@ -382,34 +382,44 @@ nav ul li a:hover {
     padding-right: 30px;
 }
 
-/* 展開/收合圖標樣式 */
+/* 修改 project-details 的樣式 */
+.project-details {
+    padding: 0;  /* 初始狀態不要有 padding */
+    background: var(--card-background);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;  /* 改為 all 來同時處理高度和 padding */
+    opacity: 0;  /* 初始狀態設為透明 */
+    visibility: hidden;  /* 初始狀態隱藏 */
+}
+
+/* 活動狀態的樣式 */
+.project-card.active .project-details {
+    max-height: 500px;
+    padding: 20px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 移除不需要的動畫類別 */
+.project-details.active {
+    animation: none;  /* 移除之前的動畫 */
+}
+
+/* 修改展開圖標的動畫 */
 .expand-icon {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
     color: var(--text-color);
     font-size: 24px;
 }
 
 .project-card.active .expand-icon {
     transform: translateY(-50%) rotate(180deg);
-}
-
-/* 內容展開動畫 */
-.project-details {
-    padding: 20px;
-    background: var(--card-background);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-
-.project-card.active .project-details {
-    max-height: 500px;
-    padding: 20px;
 }
 
 .detail-section {
