@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 確保所有專案詳細內容初始狀態正確
     document.querySelectorAll('.project-details').forEach(details => {
-        details.style.display = '';  // 移除可能存在的 display 樣式
+        details.style.display = 'none';
+        details.style.opacity = '0';
     });
 });
 
@@ -74,10 +75,25 @@ function toggleProject(projectId) {
     const icon = card.querySelector('.expand-icon');
     
     // 切換活動狀態
-    card.classList.toggle('active');
+    const isActive = card.classList.toggle('active');
     
     // 更新展開圖標
-    icon.textContent = card.classList.contains('active') ? '▼' : '▶';
+    icon.textContent = isActive ? '▼' : '▶';
+    
+    // 直接控制顯示/隱藏
+    if (isActive) {
+        details.style.display = 'block';
+        // 使用 setTimeout 確保 display: block 生效後再添加 opacity
+        setTimeout(() => {
+            details.style.opacity = '1';
+        }, 10);
+    } else {
+        details.style.opacity = '0';
+        // 等待淡出動畫完成後隱藏元素
+        setTimeout(() => {
+            details.style.display = 'none';
+        }, 300);
+    }
 }
 
 function createOverlay() {
