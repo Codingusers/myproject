@@ -350,44 +350,78 @@ nav ul li a:hover {
     .project-card {
         margin: 15px 0;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .project-header {
         padding: 15px;
         width: 100%;
+        box-sizing: border-box;
+    }
+
+    .project-header h3 {
+        font-size: 1.1em;
+        padding-right: 30px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .project-summary {
-        padding-right: 40px;
+        padding-right: 30px;
         margin: 8px 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .project-card.active .project-details {
-        max-height: 2000px;
-        padding: 15px;
         width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        left: 0;
+        transform: none !important;
     }
 
     .detail-section {
-        margin: 10px 0;
         width: 100%;
+        margin: 0 0 15px 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .detail-section h4 {
-        margin-bottom: 12px;
-        padding: 0 5px;
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 1em;
     }
 
     .detail-section ul {
-        padding: 0 10px 0 25px;
         width: 100%;
+        padding: 0 0 0 20px;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     .detail-section ul li {
-        font-size: 0.95em;
-        line-height: 1.5;
+        width: 100%;
+        padding: 0 0 0 15px;
         margin: 8px 0;
-        padding-right: 5px;
+        font-size: 0.9em;
+        line-height: 1.4;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        position: relative;
+    }
+
+    .project-details,
+    .project-card.active .project-details {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        max-height: none;
     }
 
     .timeline-content {
@@ -625,35 +659,96 @@ body::before {
 @media (max-width: 768px) {
     .project-card {
         margin: 15px 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .project-header {
         padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .project-header h3 {
         font-size: 1.1em;
         padding-right: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .project-summary {
+        padding-right: 30px;
+        margin: 8px 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .project-details {
-        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        left: 0;
+        transform: none !important;
     }
 
     .project-card.active .project-details {
         padding: 15px;
+        width: 100%;
+        position: relative;
+        left: 0;
+        transform: none !important;
     }
 
     .detail-section {
-        margin-bottom: 15px;
+        width: 100%;
+        margin: 0 0 15px 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .detail-section h4 {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 0;
+        font-size: 1em;
     }
 
     .detail-section ul {
-        padding-left: 15px;
+        width: 100%;
+        padding: 0 0 0 20px;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     .detail-section ul li {
+        width: 100%;
+        padding: 0 0 0 15px;
+        margin: 8px 0;
         font-size: 0.9em;
         line-height: 1.4;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        position: relative;
+    }
+
+    .project-details,
+    .project-card.active .project-details {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        max-height: none;
+    }
+
+    .timeline-content {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .timeline-item {
+        padding-left: 40px;
+        width: 100%;
     }
 }
