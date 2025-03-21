@@ -23,6 +23,7 @@
                     <li><a href="#experience">工作經歷</a></li>
                     <li><a href="#skills">專業技能</a></li>
                     <li><a href="#contact">聯絡資訊</a></li>
+                    <li><a href="#chatbox">智慧助手</a></li>
                 </ul>
             </nav>
         </div>
@@ -171,25 +172,21 @@
         </div>
     </section>
 
-    <section id="message" class="section">
+    <section id="chatbox" class="section">
         <div class="container">
-            <h2>留言板</h2>
-            <div class="message-form-container">
-                <form action="https://formspree.io/f/您的formspree代碼" method="POST" class="message-form">
-                    <div class="form-group">
-                        <label for="name">姓名</label>
-                        <input type="text" id="name" name="name" required>
+            <h2>智慧助手</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message system">
+                        您好！我是智慧助手，請問有什麼我可以幫助您的嗎？
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">留言內容</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">送出留言</button>
-                </form>
+                </div>
+                <div class="chat-input-container">
+                    <textarea id="chat-input" placeholder="輸入您的問題..." rows="2"></textarea>
+                    <button id="send-button" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
