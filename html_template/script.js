@@ -67,6 +67,107 @@ document.addEventListener('DOMContentLoaded', function() {
         details.style.display = 'none';
         details.style.opacity = '0';
     });
+
+// Chatbox 相關功能 (在 document.addEventListener('DOMContentLoaded', function() { 內部)
+    
+const chatMessages = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
+const sendButton = document.getElementById('send-button');
+
+// 發送訊息到 Ollama
+async function sendMessage(message) {
+    try {
+        // 添加用戶訊息到聊天框
+        addMessage(message, 'user');
+        
+        // 添加思考中的提示
+        const thinkingId = addThinkingMessage();
+        
+        // 呼叫 Flask API
+        const response = await fetch('http://localhost:5000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('API 請求失敗: ' + response.status);
+        }
+        
+        const data = await response.json();
+        
+        // 移除思考中的提示
+        removeThinkingMessage(thinkingId);
+        
+        // 檢查是否有錯誤
+        if (data.error) {
+            addMessage('錯誤: ' + data.error, 'system');
+        } else {
+            // 添加 AI 回答
+            addMessage(data.response, 'bot');
+        }
+        
+    } catch (error) {
+        console.error('錯誤:', error);
+        // 移除思考中的提示（如果有）
+        document.querySelector('.message.thinking')?.remove();
+        // 顯示錯誤訊息
+        addMessage('抱歉，無法連接到 AI 服務。請確認您的 Flask 與 Ollama 服務已啟動。', 'system');
+    }
+}
+
+// 添加訊息到聊天框
+function addMessage(text, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.textContent = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return messageDiv.id;
+}
+
+// 添加思考中的提示
+function addThinkingMessage() {
+    const thinkingDiv = document.createElement('div');
+    thinkingDiv.classList.add('message', 'system', 'thinking');
+    thinkingDiv.textContent = '思考中...';
+    chatMessages.appendChild(thinkingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return Date.now().toString();  // 返回一個唯一 ID
+}
+
+// 移除思考中的提示
+function removeThinkingMessage(id) {
+    document.querySelector('.message.thinking')?.remove();
+}
+
+// 發送按鈕點擊事件
+sendButton.addEventListener('click', () => {
+    const message = chatInput.value.trim();
+    if (message) {
+        sendMessage(message);
+        chatInput.value = '';
+        chatInput.style.height = 'auto'; // 重設輸入框高度
+    }
+});
+
+// 按 Enter 發送訊息（Shift+Enter 換行）
+chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendButton.click();
+    }
+});
+
+    // 調整輸入框高度
+    chatInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
 });
 
 function toggleProject(projectId) {
