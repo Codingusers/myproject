@@ -19,7 +19,15 @@ def chat():
             return jsonify({"error": "沒有收到訊息"}), 400
             
         # 傳送訊息給 Ollama 並取得回應
-        response = llm.chat(model="deepseek-r1:1.5b", messages=[
+        # response = llm.chat(model="deepseek-r1:1.5b", messages=[
+        #     {
+        #         "role": "user",
+        #         "content": user_input
+        #     }
+        # ])
+
+
+        response = llm.chat(model="gemma3:4b", messages=[
             {
                 "role": "user",
                 "content": user_input

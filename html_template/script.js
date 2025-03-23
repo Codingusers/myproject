@@ -116,7 +116,7 @@ async function sendMessage(message) {
         // 移除思考中的提示（如果有）
         document.querySelector('.message.thinking')?.remove();
         // 顯示錯誤訊息
-        // addMessage('抱歉，無法連接到 AI 服務。請確認您的 Flask 與 Ollama 服務已啟動。', 'system');
+        //addMessage('抱歉，無法連接到 AI 服務。請確認您的 Flask 與 Ollama 服務已啟動。', 'system');
         addMessage('抱歉服務尚未啟動。', 'system');
     }
 }
